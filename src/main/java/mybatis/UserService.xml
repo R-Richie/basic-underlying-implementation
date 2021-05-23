@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.UserService">
+    <select id="getUser" resultType="mybatis.User" parameterType="int">
+        <!-- dynamic change of parameter from int index to login string -->
+        select * from user where login = <choose>
+        <when test="_parameter == 1">'a'</when>
+        <when test="_parameter == 2">'b'</when>
+        <otherwise>'c'</otherwise>
+    </choose>
+    </select>
+</mapper>

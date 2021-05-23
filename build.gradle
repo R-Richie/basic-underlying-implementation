@@ -7,7 +7,9 @@ group 'com.breakloop.underlying'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-
+test {
+    useJUnitPlatform()
+}
 repositories {
     mavenCentral()
 }
@@ -17,4 +19,34 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compile files("${System.getProperty('java.home')}/../lib/tools.jar")
+    // https://mvnrepository.com/artifact/cglib/cglib-nodep
+    compile group: 'cglib', name: 'cglib-nodep', version: '3.3.0'
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.5.4'
+
+    // https://mvnrepository.com/artifact/org.jooq/jooq-meta
+    compile group: 'org.jooq', name: 'jooq-meta', version: '3.13.1'
+    // https://mvnrepository.com/artifact/org.jooq/jooq
+    compile group: 'org.jooq', name: 'jooq', version: '3.13.1'
+    // https://mvnrepository.com/artifact/org.jooq/jooq-codegen
+    compile group: 'org.jooq', name: 'jooq-codegen', version: '3.13.1'
+
+    // https://mvnrepository.com/artifact/org.freemarker/freemarker
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.30'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+
+    // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-jsr223
+    implementation group: 'org.codehaus.groovy', name: 'groovy-jsr223', version: '3.0.8'
+    // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy
+    implementation group: 'org.codehaus.groovy', name: 'groovy', version: '3.0.8'
+
+
+
+}
+processResources {
+    from('src/main/java') {
+        include '**/*.xml'
+    }
 }
